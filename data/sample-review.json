@@ -1,0 +1,77 @@
+{
+  "title": "Synthetic Review Workbench",
+  "subtitle": "A fictional readiness checklist for a public-safe research tooling demo.",
+  "updated": "2026-05-22",
+  "items": [
+    {
+      "id": "DOC-001",
+      "title": "README explains the user problem in the first screen",
+      "category": "Documentation",
+      "severity": "High",
+      "status": "Open",
+      "owner": "Maintainer",
+      "evidence": "The README currently starts with install steps before explaining the workflow.",
+      "next_step": "Move the one-sentence value proposition before setup commands."
+    },
+    {
+      "id": "VAL-002",
+      "title": "Public validation script blocks local paths and credentials",
+      "category": "Validation",
+      "severity": "High",
+      "status": "In Progress",
+      "owner": "Automation",
+      "evidence": "The checker covers local paths, key-like strings, phone-like strings, and hidden workspace markers.",
+      "next_step": "Add a regression fixture for a fake local path."
+    },
+    {
+      "id": "UX-003",
+      "title": "Filter controls remain usable on narrow screens",
+      "category": "Interface",
+      "severity": "Medium",
+      "status": "Done",
+      "owner": "Frontend",
+      "evidence": "Controls wrap into a compact grid at mobile width.",
+      "next_step": "Keep button labels short and verify no horizontal overflow."
+    },
+    {
+      "id": "DATA-004",
+      "title": "Examples use fictional names and synthetic content",
+      "category": "Privacy",
+      "severity": "High",
+      "status": "Done",
+      "owner": "Maintainer",
+      "evidence": "No real meeting, manuscript, company, or job-search data appears in the sample JSON.",
+      "next_step": "Re-run public asset validation before each release."
+    },
+    {
+      "id": "REL-005",
+      "title": "Release checklist includes tests and screenshot verification",
+      "category": "Release",
+      "severity": "Medium",
+      "status": "Open",
+      "owner": "Release",
+      "evidence": "The template has data tests and a generated screenshot path, but the release note is not written.",
+      "next_step": "Add release verification notes to the README."
+    },
+    {
+      "id": "A11Y-006",
+      "title": "Selected review item is announced with clear focus state",
+      "category": "Accessibility",
+      "severity": "Medium",
+      "status": "Open",
+      "owner": "Frontend",
+      "evidence": "Item buttons use semantic button elements and visible focus outlines.",
+      "next_step": "Confirm keyboard selection updates the detail panel."
+    },
+    {
+      "id": "LOW-007",
+      "title": "Optional export keeps only filtered items",
+      "category": "Workflow",
+      "severity": "Low",
+      "status": "Done",
+      "owner": "Automation",
+      "evidence": "The export button serializes the current filtered collection.",
+      "next_step": "Mention that export happens locally in the browser."
+    }
+  ]
+}
