@@ -29,6 +29,12 @@ class ReviewDataTests(unittest.TestCase):
         ids = [item["id"] for item in data["items"]]
         self.assertEqual(len(ids), len(set(ids)))
 
+    def test_renderer_escapes_item_fields(self) -> None:
+        html = (ROOT / "index.html").read_text(encoding="utf-8")
+        self.assertIn("function escapeHtml", html)
+        self.assertIn("${escapeHtml(item.title)}", html)
+        self.assertNotIn("<h3>${item.title}</h3>", html)
+
 
 if __name__ == "__main__":
     unittest.main()

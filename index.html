@@ -432,6 +432,16 @@
       return value === "Done" ? "done" : "";
     }
 
+    function escapeHtml(value) {
+      return String(value ?? "").replace(/[&<>"']/g, char => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;"
+      }[char]));
+    }
+
     function renderStats(current) {
       const open = current.filter(item => item.status === "Open").length;
       const progress = current.filter(item => item.status === "In Progress").length;
@@ -464,17 +474,17 @@
       }
 
       els.list.innerHTML = current.map(item => `
-        <button class="item" type="button" data-id="${item.id}" aria-selected="${item.id === state.selectedId}">
+        <button class="item" type="button" data-id="${escapeHtml(item.id)}" aria-selected="${item.id === state.selectedId}">
           <div>
-            <p class="item-title">${item.title}</p>
+            <p class="item-title">${escapeHtml(item.title)}</p>
             <div class="meta">
-              <span class="tag ${severityClass(item.severity)}">${item.severity}</span>
-              <span class="tag ${statusClass(item.status)}">${item.status}</span>
-              <span class="tag">${item.category}</span>
-              <span class="tag">${item.owner}</span>
+              <span class="tag ${severityClass(item.severity)}">${escapeHtml(item.severity)}</span>
+              <span class="tag ${statusClass(item.status)}">${escapeHtml(item.status)}</span>
+              <span class="tag">${escapeHtml(item.category)}</span>
+              <span class="tag">${escapeHtml(item.owner)}</span>
             </div>
           </div>
-          <span class="item-id">${item.id}</span>
+          <span class="item-id">${escapeHtml(item.id)}</span>
         </button>
       `).join("");
 
@@ -495,17 +505,17 @@
       }
 
       els.detail.innerHTML = `
-        <h3>${item.title}</h3>
+        <h3>${escapeHtml(item.title)}</h3>
         <div class="meta">
-          <span class="tag">${item.id}</span>
-          <span class="tag ${severityClass(item.severity)}">${item.severity}</span>
-          <span class="tag ${statusClass(item.status)}">${item.status}</span>
-          <span class="tag">${item.category}</span>
+          <span class="tag">${escapeHtml(item.id)}</span>
+          <span class="tag ${severityClass(item.severity)}">${escapeHtml(item.severity)}</span>
+          <span class="tag ${statusClass(item.status)}">${escapeHtml(item.status)}</span>
+          <span class="tag">${escapeHtml(item.category)}</span>
         </div>
         <dl>
-          <dt>Owner</dt><dd>${item.owner}</dd>
-          <dt>Evidence</dt><dd>${item.evidence}</dd>
-          <dt>Next step</dt><dd>${item.next_step}</dd>
+          <dt>Owner</dt><dd>${escapeHtml(item.owner)}</dd>
+          <dt>Evidence</dt><dd>${escapeHtml(item.evidence)}</dd>
+          <dt>Next step</dt><dd>${escapeHtml(item.next_step)}</dd>
         </dl>
       `;
     }
